@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Similarity Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/4.15.0/antd.min.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .ant-form-item {
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cosine Similarity Calculator</h2>
+        <form (ngSubmit)="onSubmitCosine()">
+            <div class="ant-form-item">
+                <label for="sentence1">Sentence 1:</label>
+                <textarea id="sentence1" class="ant-input" rows="3" [(ngModel)]="sentence1" name="sentence1" required></textarea>
+            </div>
+            <div class="ant-form-item">
+                <label for="sentence2">Sentence 2:</label>
+                <textarea id="sentence2" class="ant-input" rows="3" [(ngModel)]="sentence2" name="sentence2" required></textarea>
+            </div>
+            <div class="ant-form-item">
+                <button type="submit" class="ant-btn ant-btn-primary">Calculate Similarity</button>
+            </div>
+        </form>
+        <div *ngIf="cosineSimilarity !== null">
+            <h3>Cosine Similarity: {{ cosineSimilarity }}</h3>
+        </div>
+
+        <h2>Jaccard Similarity Calculator</h2>
+        <form (ngSubmit)="onSubmitJaccard()">
+            <div class="ant-form-item">
+                <label for="set1">Set 1 (comma-separated):</label>
+                <input id="set1" class="ant-input" [(ngModel)]="set1" name="set1" required>
+            </div>
+            <div class="ant-form-item">
+                <label for="set2">Set 2 (comma-separated):</label>
+                <input id="set2" class="ant-input" [(ngModel)]="set2" name="set2" required>
+            </div>
+            <div class="ant-form-item">
+                <button type="submit" class="ant-btn ant-btn-primary">Calculate Similarity</button>
+            </div>
+        </form>
+        <div *ngIf="jaccardSimilarity !== null">
+            <h3>Jaccard Similarity: {{ jaccardSimilarity }}</h3>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/antd/4.15.0/antd.min.js"></script>
+</body>
+</html>
